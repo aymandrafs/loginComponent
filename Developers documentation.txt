@@ -1,0 +1,253 @@
+
+Introduction:
+
+Resume Builder is an application designed to streamline the process of creating professional resumes. It is built on a robust stack comprising Next.js for the frontend, docx js for generating Word documents, and Tailwind CSS for styling. By leveraging these technologies, Resume Builder offers users a seamless and efficient experience in crafting their resumes, whether for job applications, academic pursuits, or personal use.
+
+/////
+
+***`uploadHandler` Function Documentation:
+1. Overview:
+Uses: This function is used to extract text content from a .docx file uploaded by the user, typically within a web application interface.
+Application: It is commonly used in applications where users need to upload their resumes or documents in .docx format, and the text content from these files needs to be processed or displayed.
+
+2. Parameters:
+file (File): The .docx file to be processed and from which the text content will be extracted.
+
+3. How to Use the Function:
+To use the uploadHandler function:
+
+Provide the .docx file as the file parameter when calling the function.
+
+4. Function Returns:
+Example Return: The function returns the extracted text content from the uploaded .docx file.
+
+Copy code
+// Example usage:
+const file = /* Your uploaded .docx file */;
+const extractedText = uploadHandler(file);
+// Output: Extracted text content from the uploaded .docx file
+
+
+5. Test Cases:
+Test Case 1: Valid File Upload
+Scenario: A valid .docx file is uploaded.
+Input: A valid .docx file.
+Expected Output: The function successfully extracts the text content from the file.
+
+Test Case 2: Invalid File Upload - Unsupported File Type
+Scenario: An invalid file format (not .docx) is uploaded.
+Input: A file with an unsupported format.
+Expected Output: The function returns an error indicating that the file type is not supported.
+
+Test Case 3: Empty File Upload
+Scenario: No file is uploaded.
+Input: No file selected.
+Expected Output: The function returns an error indicating that no file was uploaded.
+
+Test Case 4: Exceeding File Size Limit
+Scenario: The uploaded file exceeds the maximum allowed file size.
+Input: A .docx file with a size greater than the maximum allowed size.
+Expected Output: The function returns an error indicating that the file size is too large. Prompt the user to upload a smaller file.
+
+6. Error Handling:
+Problem: Unsupported File Type
+
+Solution: Display an error message to the user indicating that the uploaded file type is not supported. Prompt the user to upload a .docx file.
+Problem: Empty File Upload
+
+Solution: Display an error message to the user indicating that no file was uploaded. Prompt the user to select a .docx file for upload.
+Problem: Exceeding File Size Limit
+
+Solution: Display an error message to the user indicating that the uploaded file size is too large. Prompt the user to upload a smaller file within the allowed size limit.
+Problem: File Reading Error
+
+Solution: If there's an error while reading the file content, display an error message to the user indicating that there was an issue processing the uploaded file. Prompt the user to try again or contact support if the issue persists.
+
+
+/************************************************************************\
+
+
+Here's the documentation for the ""fetchGptResponse"" function:
+
+1. Overview:
+Uses and Application:
+The fetchGptResponse function is used to send a message to the GPT-3 model (via the specified endpoint) and retrieve a response from the model based on the provided message. This function is typically used in applications where natural language processing or conversational AI capabilities are required, such as chatbots, virtual assistants, or text-based conversational interfaces.
+
+2. Parameters:
+message (string): The message to be sent to the GPT-3 model for generating a response.
+
+3.how to use the fetchGptResponse function:
+
+Import the Function:
+Import the fetchGptResponse function from its module into your JavaScript or TypeScript file. You can use the appropriate import statement based on your project setup.
+
+**typescript
+
+import { fetchGptResponse } from 'path/to/fetchGptResponse';
+Provide the Message:
+Prepare the message that you want to send to the GPT-3 model for generating a response. This message can be any string representing the user input or query that you want the model to process.
+
+**typescript
+const message = "Hello, how can I help you today?";
+Call the Function:
+Invoke the fetchGptResponse function and pass the prepared message as an argument. Since this function returns a promise, you should use an asynchronous await syntax or handle the promise using .then() and .catch().
+
+**typescript
+try {
+  const response = await fetchGptResponse(message);
+  console.log(response);
+} catch (error) {
+  console.error(error.message);
+}
+Handle the Response:
+Once the promise is resolved, the response variable will contain the response generated by the GPT-3 model based on the provided message. You can then use this response in your application logic, such as displaying it to the user or further processing it.
+
+**typescript
+console.log(response); // Output: { choices: [{ message: { content: 'Generated response from GPT-3 model' } }] }
+Error Handling:
+It's important to handle errors that may occur during the execution of the fetchGptResponse function. This includes handling network errors, invalid responses from the GPT-3 API, or any other unexpected errors. Use try-catch blocks or .catch() methods to handle errors gracefully and provide appropriate error messages to the user.
+
+**typescript
+try {
+  // Call fetchGptResponse function
+} catch (error) {
+  console.error(error.message); // Handle error
+}
+Additional Considerations:
+
+Ensure that the fetchGptResponse function is properly imported and accessible within your application.
+Verify that the GPT-3 model endpoint URL, model settings, and headers are correctly configured according to your application requirements.
+Test the function with various input messages to ensure that it behaves as expected and handles errors gracefully.
+
+4. Function Returns:
+The function returns a promise that resolves to a JSON object representing the response generated by the GPT-3 model based on the provided message.
+
+5. Test Cases:
+Test Case 1: Valid Message Response
+Scenario: A valid message is provided to the function.
+Input: A valid message string.
+Expected Output: The function successfully sends the message to the GPT-3 model and returns the generated response in JSON format.
+Test Case 2: Empty Message Response
+Scenario: An empty message string is provided to the function.
+Input: An empty string.
+Expected Output: The function throws an error indicating that the message cannot be empty.
+Test Case 3: Error Handling
+Scenario: An error occurs during the API call to the GPT-3 model endpoint.
+Input: Invalid endpoint or network error.
+Expected Output: The function throws an error with a descriptive error message.
+6. Error Handling:
+
+Error - Type Error
+Error Type: Type error.
+Error Message: "Type error: Invalid data type for parameter [parameterName]."
+Error Recreation: Pass a parameter with an incorrect data type to the fetchGptResponse function.
+Possible Resolutions:
+Check the data types of all parameters passed to the function and ensure they match the expected types.
+Validate input data before calling the function to avoid passing incorrect data types.
+Error - Parameter Error
+Error Type: Parameter error.
+Error Message: "Parameter error: Missing or invalid parameter [parameterName]."
+Error Recreation: Call the fetchGptResponse function with missing or invalid parameters.
+Possible Resolutions:
+Ensure all required parameters are provided when calling the function.
+Validate parameter values to ensure they meet any constraints or requirements specified by the function.
+Error - Network Error
+Error Type: Network error.
+Error Message: "Network error: Failed to connect to ChatGPT API."
+Error Recreation: Simulate a network failure or timeout while calling the ChatGPT API.
+Possible Resolutions:
+Check network connectivity and ensure the device has access to the internet.
+Handle network errors gracefully by implementing retry logic or displaying appropriate error messages to the user.
+Error - Unexpected Response Error
+Error Type: Unexpected response error.
+Error Message: "Unexpected response error: Invalid response from ChatGPT API."
+Error Recreation: Receive an unexpected or malformed response from the ChatGPT API.
+Possible Resolutions:
+Review the response handling logic to ensure it can handle different response formats or error responses from the API.
+Add additional error checking and validation to handle unexpected responses more robustly.
+
+Problem: Empty Message
+
+Solution: Throw an error indicating that the message cannot be empty. Prompt the user to provide a valid message.
+Problem: Error from GPT-3 API
+
+Solution: If there's an error response from the GPT-3 API, throw an error with a descriptive message indicating the issue. Prompt the user to check their internet connection or try again later.
+Problem: Unexpected Error
+
+Solution: If an unexpected error occurs during the function execution, throw an error with a generic message. Prompt the user to try again and contact support if the issue persists.
+
+Error Codes
+ HTTP error status codes that you might encounter while using the fetchGptResponse function along with their resolutions:
+
+400 Bad Request:
+
+Resolution: Check if the request parameters are correctly formatted and include all required fields. Ensure that the message parameter is not empty or malformed.
+401 Unauthorized:
+
+Resolution: Verify that the authentication credentials (such as API keys or tokens) provided in the gptHeaders are correct and have sufficient permissions to access the ChatGPT API.
+403 Forbidden:
+
+Resolution: Check if the provided authentication credentials have the necessary permissions to access the specified endpoint (gptChatResponseUrl). Ensure that the API key or token is valid and has not expired.
+404 Not Found:
+
+Resolution: Verify that the endpoint URL (${gptBaseUrl}/${gptChatResponseUrl}) is correct and corresponds to a valid endpoint in the ChatGPT API. Double-check the spelling and ensure that the endpoint exists.
+408 Request Timeout:
+
+Resolution: Investigate the network connection and server response times. This error may occur if the server takes too long to respond. Check for any network issues or server downtime.
+429 Too Many Requests:
+
+Resolution: This error indicates that the client has exceeded the rate limit for accessing the ChatGPT API. Consider implementing rate limiting on the client side or contacting the API provider to request a higher rate limit.
+500 Internal Server Error:
+
+Resolution: This error indicates an unexpected condition on the server side. It could be caused by various factors such as server misconfiguration, database errors, or issues with the API implementation. Contact the API provider for assistance in troubleshooting the issue.
+502 Bad Gateway:
+
+Resolution: This error typically occurs when the server acting as a gateway or proxy received an invalid response from an upstream server. Check the upstream servers for any issues or errors that may be causing the problem.
+503 Service Unavailable:
+
+Resolution: This error indicates that the server is currently unable to handle the request due to temporary overload or maintenance. Retry the request after a brief period or contact the API provider for more information on the service availability.
+
+
+/****************************************************************************************\
+
+
+***Download resume	
+
+
+
+1. Basic Information:
+Uses and Application: This function is used to generate a Microsoft Word document (.docx) based on provided data. It is typically used in web applications where users can dynamically generate and download resumes or documents containing structured information.
+
+2. Parameters:
+data: An object containing the data to be included in the document. This data should follow a specific format based on the structure of the document to be generated.
+selectedbdm: An object representing the Business Development Manager (BDM) with properties like name, phone, and mail.
+
+3. How to Use the Function:
+Import the generateDocument function from the respective file.
+Call the generateDocument function with the required parameters: data and selectedbdm.
+Ensure that the data object contains the necessary information structured according to the desired layout of the document.
+
+4. Function Returns:
+This function does not have a return value. It generates a .docx file based on the provided data and initiates a download of the generated file.
+
+5. Test Cases:
+Test Case 1: Provide valid data and selectedbdm objects and verify that the function generates and downloads the expected .docx file.
+Test Case 2: Pass null or empty objects for data and selectedbdm and ensure that the function handles these cases gracefully without throwing errors.
+Test Case 3: Pass invalid or incomplete data objects and observe how the function handles missing or incorrect data fields.
+
+6. Error Handling:
+Problem: Invalid or incomplete data object provided.
+Solution: Implement data validation checks within the function to ensure that required fields are present and have valid values.
+Problem: Unable to generate the document due to formatting or content issues.
+Solution: Debug the function to identify the specific cause of the issue, such as incorrect document structure or unsupported content types, and adjust the code accordingly.
+Problem: Unable to download the generated document.
+Solution: Verify the browser's download settings and ensure that the function initiates the download process correctly. Additionally, handle any potential errors or exceptions that may occur during the download process.
+
+
+File Generation Success: If the document generation is successful and the .docx file is generated and downloaded without any issues, it does not return a status code. Instead, it triggers the download of the generated file.
+
+File Generation Failure: If the document generation fails due to errors in the data structure, formatting issues, or other internal problems, the function does not return a status code directly. Instead, it may throw an error or fail silently, depending on how it's implemented.
+
+File Download Success: If the generated file is successfully downloaded by the user, it does not return a status code. The browser typically handles the download process, and the function does not directly interact with HTTP responses or status codes during this step.
+
+File Download Failure: If the file download fails due to network issues, permissions problems, or other reasons, the browser may return an appropriate HTTP status code (e.g., 404 for not found, 403 for forbidden, etc.). However, the function itself does not handle or return these status codes.
